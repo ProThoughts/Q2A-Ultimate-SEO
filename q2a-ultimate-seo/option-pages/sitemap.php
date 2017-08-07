@@ -52,7 +52,7 @@
 <h3 class="heading">Sitemap for Tags</h3>
 <div class="useo-option-container">
 	<div class="useo-option-detail">
-		Enable Sitemap for users
+		Enable Sitemap for Tags
 	</div>
 	<div class="useo-option-content">
 		<div class="useo-checkbox-container">
@@ -62,7 +62,7 @@
 	</div>
 </div>
 <div id="useo-criteria-container" class="useo-option-container">
-	<div class="useo-option-detail">Number of list per sitemap:</div>
+	<div class="useo-option-detail">Number of tags per sitemap:</div>
 	<div class="useo-option-content">
 		<div class="useo-text-container">
 			<input value="<?php echo (int)qa_opt('useo_sitemap_tags_count'); ?>" type="text" id="" class="useo-text" name="useo_sitemap_tags_count">
@@ -74,7 +74,7 @@
 <h3 class="heading">Sitemap for Categories</h3>
 <div class="useo-option-container">
 	<div class="useo-option-detail">
-		Enable Sitemap for users
+		Enable Sitemap for Categories
 	</div>
 	<div class="useo-option-content">
 		<div class="useo-checkbox-container">
@@ -98,7 +98,7 @@
 	</div>
 </div>
 <div id="useo-criteria-container" class="useo-option-container">
-	<div class="useo-option-detail">Number of list per sitemap:</div>
+	<div class="useo-option-detail">Number of questions per sitemap:</div>
 	<div class="useo-option-content">
 		<div class="useo-text-container">
 			<input value="<?php echo (int)qa_opt('useo_sitemap_categoriy_q_count'); ?>" type="text" id="" class="useo-text" name="useo_sitemap_categoriy_q_count">
@@ -140,8 +140,8 @@
 $q_sitemaps=qa_db_read_one_assoc(qa_db_query_sub(
 	"SELECT count(*) as total from ^posts WHERE type='Q'"
 ));
-$count=qa_opt('useo_sitemap_question_count');
-$q_sitemap_count = ceil($q_sitemaps['total'] / $count);
+$count = (int)qa_opt('useo_sitemap_question_count');
+$q_sitemap_count =  $count > 0 ? ceil($q_sitemaps['total'] / $count) : 0;
 for ($i = 0; $i < $q_sitemap_count; $i++){
 	echo '<p><a href="' . $siteurl .  'sitemap-'. $i . '.xml">'. 'sitemap-'. $i . '.xml' . '</a></p>';
 }	

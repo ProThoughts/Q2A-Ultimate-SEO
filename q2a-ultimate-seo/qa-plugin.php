@@ -2,11 +2,11 @@
         
 /*              
     Plugin Name: Q2A Ultimate SEO
-    Plugin URI: https://github.com/Towhidn/Q2A-Ultimate-SEO/
-    Plugin Update Check URI:  https://github.com/Towhidn/Q2A-Ultimate-SEO/raw/master/q2a-ultimate-seo/qa-plugin.php
-    Plugin Description: SEO Links for Question2Answer
-    Plugin Version: 1.3
-    Plugin Date: 2014-24-1
+    Plugin URI: https://github.com/q2a-projects/Q2A-Ultimate-SEO/
+    Plugin Update Check URI:  https://github.com/q2a-projects/Q2A-Ultimate-SEO/raw/master/q2a-ultimate-seo/qa-plugin.php
+    Plugin Description: SEO for Question2Answer
+    Plugin Version: 1.5
+    Plugin Date: 2017-07-15
     Plugin Author: QA-Themes.com
     Plugin Author URI: http://QA-Themes.com
     Plugin License: copy lifted                           
@@ -45,7 +45,7 @@
 function useo_get_base_url()
 {
 	/* First we need to get the protocol the website is using */
-	$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5)) == 'https' ? 'https://' : 'http://';
+	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 
 	/* returns /myproject/index.php */
 	if(QA_URL_FORMAT_NEAT == 0 || strpos($_SERVER['PHP_SELF'],'/index.php/') !== false):
